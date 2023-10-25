@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangoWidgets.Avalonia.Sample", "MangoWidgets.Avalonia.Sample\MangoWidgets.Avalonia.Sample.csproj", "{7C126297-E48E-424F-9D70-1EAD882028F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangoWidgets.Avalonia", "MangoWidgets.Avalonia\MangoWidgets.Avalonia.csproj", "{2BD74C46-FB4F-4FE9-8231-1D5047FEFFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MangoWidgets.Core", "MangoWidgets.Core\MangoWidgets.Core.csproj", "{9B12E0E1-08EA-420E-B65C-DDDA977BCC1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C126297-E48E-424F-9D70-1EAD882028F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C126297-E48E-424F-9D70-1EAD882028F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C126297-E48E-424F-9D70-1EAD882028F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C126297-E48E-424F-9D70-1EAD882028F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD74C46-FB4F-4FE9-8231-1D5047FEFFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD74C46-FB4F-4FE9-8231-1D5047FEFFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD74C46-FB4F-4FE9-8231-1D5047FEFFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD74C46-FB4F-4FE9-8231-1D5047FEFFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B12E0E1-08EA-420E-B65C-DDDA977BCC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B12E0E1-08EA-420E-B65C-DDDA977BCC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B12E0E1-08EA-420E-B65C-DDDA977BCC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B12E0E1-08EA-420E-B65C-DDDA977BCC1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
