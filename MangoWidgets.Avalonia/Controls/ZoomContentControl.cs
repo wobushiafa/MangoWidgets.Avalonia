@@ -27,7 +27,6 @@ public class ZoomContentControl : ContentControl
     
     static ZoomContentControl()
     {
-        ClipToBoundsProperty.OverrideDefaultValue<LayoutTransformControl>(false);
         ContentProperty.Changed.AddClassHandler<ZoomContentControl>(HandleContentChanged);
     }
 
