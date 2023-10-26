@@ -1,10 +1,10 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
+﻿using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
+using MangoWidgets.Avalonia.Sample.ViewModels;
 
 namespace MangoWidgets.Avalonia.Sample.Views;
 
-public partial class ZoomView : UserControl
+public partial class ZoomView : ReactiveUserControl<ZoomViewModel>
 {
     public ZoomView()
     {

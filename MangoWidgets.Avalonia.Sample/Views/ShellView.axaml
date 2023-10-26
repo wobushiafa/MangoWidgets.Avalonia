@@ -1,0 +1,36 @@
+<reactiveUi:ReactiveWindow x:Class="MangoWidgets.Avalonia.Sample.Views.ShellView"
+                           xmlns="https://github.com/avaloniaui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:contracts="clr-namespace:MangoWidgets.Avalonia.Sample.Contracts"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:reactiveUi="http://reactiveui.net"
+                           xmlns:views="clr-namespace:MangoWidgets.Avalonia.Sample.Views"
+                           xmlns:vm="using:MangoWidgets.Avalonia.Sample.ViewModels"
+                           Title="MangoWidgets.Avalonia.Sample"
+                           d:DesignHeight="450"
+                           d:DesignWidth="800"
+                           x:DataType="vm:ShellViewModel"
+                           x:TypeArguments="vm:ShellViewModel"
+                           FontFamily="微软雅黑"
+                           Icon="/Assets/avalonia-logo.ico"
+                           mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:ShellViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="160,*">
+        <ListBox Grid.Column="0"
+                 ItemsSource="{Binding Modules, Mode=OneWay}"
+                 SelectedItem="{Binding CurrentModule}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="contracts:IMainModule">
+                    <TextBlock Text="{Binding DisplayName, Mode=OneWay}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentModule, Mode=OneWay}" />
+    </Grid>
+</reactiveUi:ReactiveWindow>

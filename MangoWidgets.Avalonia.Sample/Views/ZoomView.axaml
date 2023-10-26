@@ -11,6 +11,6 @@
                                 x:TypeArguments="viewModels:ZoomViewModel"
                                 mc:Ignorable="d">
     <controls:ZoomContentControl CanZoom="True">
-        <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" />
+        <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
     </controls:ZoomContentControl>
 </reactiveUi:ReactiveUserControl>
