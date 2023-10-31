@@ -26,6 +26,7 @@ public partial class DrawingBoardView : ReactiveUserControl<DrawingBoardViewMode
                     handler => _materialHost.PointerPressed += handler,
                     handler => _materialHost.PointerPressed -= handler)
                 .ObserveOn(RxApp.MainThreadScheduler)
+                .Where(e => e.EventArgs.GetCurrentPoint(_materialHost).Properties.IsLeftButtonPressed)
                 .Select(e => e.EventArgs.GetPosition(_materialHost))
                 .InvokeCommand(this,x => x.ViewModel!.PointerPressedCommand)
                 .DisposeWith(disposables);

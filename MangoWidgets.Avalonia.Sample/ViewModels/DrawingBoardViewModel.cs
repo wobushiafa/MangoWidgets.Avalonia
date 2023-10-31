@@ -30,18 +30,20 @@ public class DrawingBoardViewModel : ViewModelBase ,IMainModule
         PointerMovedCommand = ReactiveCommand.Create<Point>(OnPointerMoved);
         PointerReleasedCommand = ReactiveCommand.Create(OnPointerReleased);
         ClearCommand = ReactiveCommand.Create(Clear);
-        Materials.Add(new ImageMateiral() { X = 400,Y=800,Width=500,Height=500});
+
+		Materials.Add(new ImageMateiral() { X = 400d, Y = 800d, Width = 500, Height = 500 });
 	}
-    
-    
-    private void OnPointerPressed(Point point)
+
+
+
+	private void OnPointerPressed(Point point)
     {
         _noteMaterial = new NoteMaterial();
         _noteMaterial.Dots.Add(new Dot((int)point.X,(int)point.Y));
         Materials.Add(_noteMaterial);
-    }
-    
-    private void OnPointerMoved(Point point) => _noteMaterial?.Dots.Add(new Dot((int)point.X,(int)point.Y));
+	}
+
+	private void OnPointerMoved(Point point) => _noteMaterial?.Dots.Add(new Dot((int)point.X,(int)point.Y));
 
     private void OnPointerReleased() => _noteMaterial = null;
 

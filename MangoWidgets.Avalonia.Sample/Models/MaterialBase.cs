@@ -2,16 +2,16 @@
 
 public class MaterialBase : NotifyBase
 {
-	private int _x;
-	public int X
+	private double _x;
+	public double X
 	{
 		get => _x;
 		set => SetField(ref _x, value);
 	}
 
 
-	private int _y;
-	public int Y
+	private double _y;
+	public double Y
 	{
 		get => _y;
 		set => SetField(ref _y, value);
