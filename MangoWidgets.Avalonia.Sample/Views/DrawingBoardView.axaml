@@ -25,7 +25,7 @@
                           ItemsSource="{Binding Materials, Mode=OneWay}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
-						<controls:ItemCanDragCanvas Background="Transparent"/>
+						<controls:ItemCanDraggedCanvas Background="Transparent"/>
 					</ItemsPanelTemplate>
 				</ItemsControl.ItemsPanel>
 				<ItemsControl.ItemContainerTheme>

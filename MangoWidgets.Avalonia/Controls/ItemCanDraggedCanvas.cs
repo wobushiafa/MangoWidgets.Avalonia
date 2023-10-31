@@ -6,13 +6,20 @@ using MangoWidgets.Avalonia.AttachtedProperties;
 
 namespace MangoWidgets.Avalonia.Controls;
 
-public class ItemCanDragCanvas : Canvas
+public class ItemCanDraggedCanvas : Canvas
 {
 	private ContentPresenter? _draggedElement;
 	private bool _isDragging;
 	private Point _originPos;
 	private double _origHorizOffset, _origVertOffset;
 	private bool _modifyLeftOffset, _modifyTopOffset;
+
+	public bool AllowDragOutOfView
+	{
+		get => GetValue(AllowDragOutOfViewProperty);
+		set => SetValue(AllowDragOutOfViewProperty, value);
+	}
+	public static readonly StyledProperty<bool> AllowDragOutOfViewProperty = AvaloniaProperty.Register<ItemCanDraggedCanvas, bool>(nameof(AllowDragOutOfView),false);
 
 	protected override void OnPointerPressed(PointerPressedEventArgs e)
 	{
@@ -59,6 +66,43 @@ public class ItemCanDragCanvas : Canvas
 			? _origVertOffset + (cursorLocation.Y - _originPos.Y)
 			: _origVertOffset - (cursorLocation.Y - _originPos.Y);
 
+		if (!AllowDragOutOfView)
+		{
+			var elemRect = CalculateDragElementRect(newHorizontalOffset, newVerticalOffset);
+			#region Verify Drag Element Location
+			// Get the bounding rect of the drag element.
+			//
+			// If the element is being dragged out of the viewable area,
+			// determine the ideal rect location, so that the element is
+			// within the edge(s) of the canvas.
+			//
+			var leftAlign = elemRect.Left < 0;
+			var rightAlign = elemRect.Right > Bounds.Width;
+
+			if (leftAlign)
+			{
+				newHorizontalOffset = _modifyLeftOffset ? 0 : Bounds.Width - elemRect.Width;
+			}
+			else if (rightAlign)
+			{
+				newHorizontalOffset = _modifyLeftOffset ? Bounds.Width - elemRect.Width : 0;
+			}
+
+			var topAlign = elemRect.Top < 0;
+			var bottomAlign = elemRect.Bottom > Bounds.Height;
+
+			if (topAlign)
+			{
+				newVerticalOffset = _modifyTopOffset ? 0 : Bounds.Height - elemRect.Height;
+			}
+			else if (bottomAlign)
+			{
+				newVerticalOffset = _modifyTopOffset ? Bounds.Height - elemRect.Height : 0;
+			}
+
+			#endregion Verify Drag Element Location
+		}
+
 		if (_modifyLeftOffset)
 			SetLeft(_draggedElement, newHorizontalOffset);
 		else
@@ -76,6 +120,18 @@ public class ItemCanDragCanvas : Canvas
 		base.OnPointerReleased(e);
 		_draggedElement = null;
 		_isDragging = false;
+	}
+
+	private Rect CalculateDragElementRect(double newHorizOffset, double newVertOffset)
+	{
+		if (_draggedElement == null)
+			throw new InvalidOperationException("draggedElement is null.");
+		var elemSize = _draggedElement.Bounds;
+		double x, y;
+		x = _modifyLeftOffset ? newHorizOffset : elemSize.Width - newHorizOffset - elemSize.Width;
+		y = _modifyTopOffset ? newVertOffset : elemSize.Height - newVertOffset - elemSize.Height;
+		var elemLoc = new Point(x, y);
+		return new Rect(elemLoc, elemSize.Size);
 	}
 
 	private static ContentPresenter? GetContentPresenter(object? o)
