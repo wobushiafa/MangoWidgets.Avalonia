@@ -1,6 +1,4 @@
-﻿using MangoWidgets.Avalonia.Sample.Models;
-
-namespace MangoWidgets.Avalonia.Sample.Models;
+﻿namespace MangoWidgets.Avalonia.Sample.Models;
 
 public class MaterialBase : NotifyBase
 {

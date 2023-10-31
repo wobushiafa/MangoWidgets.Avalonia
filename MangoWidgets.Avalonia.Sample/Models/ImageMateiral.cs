@@ -1,10 +1,18 @@
-﻿using MangoWidgets.Avalonia.Sample.Models;
-
-namespace MangoWidgets.Avalonia.Sample.Models;
+﻿namespace MangoWidgets.Avalonia.Sample.Models;
 
 public class ImageMateiral : MaterialBase
 {
-    public int Width { get; set; }
+	private int _width;
+	public int Width
+	{
+		get => _width;
+		set => SetField(ref _width,value);
+	}
 
-    public int Height { get; set; }
+	private int _height;
+	public int Height
+	{
+		get => _height;
+		set => SetField(ref _height,value);
+	}
 }
