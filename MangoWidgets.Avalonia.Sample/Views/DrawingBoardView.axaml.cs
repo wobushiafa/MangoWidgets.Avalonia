@@ -18,7 +18,6 @@ public partial class DrawingBoardView : ReactiveUserControl<DrawingBoardViewMode
     public DrawingBoardView()
     {
         InitializeComponent();
-        
         _materialHost = this.Find<ItemsControl>("MaterialHost")!;
 
         this.WhenActivated(disposables =>

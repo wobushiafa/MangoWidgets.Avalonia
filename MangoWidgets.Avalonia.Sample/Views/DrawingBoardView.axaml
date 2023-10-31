@@ -22,13 +22,25 @@
                           Height="1080"
                           Background="Transparent"
                           ItemsSource="{Binding Materials, Mode=OneWay}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="models:NoteMaterial">
-                        <controls:StrokeElement Points="{Binding Dots, Mode=OneWay}"
+				<ItemsControl.DataTemplates>
+					<DataTemplate DataType="models:NoteMaterial">
+						<controls:StrokeElement Points="{Binding Dots, Mode=OneWay}"
                                                 Stroke="{Binding Color, Mode=OneWay}"
                                                 StrokeThickness="{Binding Thickness, Mode=OneWay}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+					</DataTemplate>
+					<DataTemplate DataType="models:ImageMateiral">
+						<controls:ImageElement Canvas.Left="{Binding X}"
+											   Width="{Binding Width}"
+											   Height="{Binding Height}"
+											   Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg"
+										       Canvas.Top="{Binding Y}"/>
+					</DataTemplate>
+				</ItemsControl.DataTemplates>
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Canvas/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
             </ItemsControl>
         </Viewbox>
 

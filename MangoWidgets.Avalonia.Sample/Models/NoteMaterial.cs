@@ -4,7 +4,7 @@ using MangoWidgets.Core;
 
 namespace MangoWidgets.Avalonia.Sample.Models;
 
-public class NoteMaterial : NotifyBase
+public class NoteMaterial : MaterialBase
 {
     private double _thickness = 2d;
     public double Thickness 

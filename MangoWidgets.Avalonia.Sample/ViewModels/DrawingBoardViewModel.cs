@@ -12,7 +12,7 @@ public class DrawingBoardViewModel : ViewModelBase ,IMainModule
 {
     public string? DisplayName { get; set; }
     public int Index { get; set; }
-    public ObservableCollection<NoteMaterial> Materials { get; set; } = new();
+    public ObservableCollection<MaterialBase> Materials { get; set; } = new();
 
     private NoteMaterial? _noteMaterial;
     
@@ -30,7 +30,9 @@ public class DrawingBoardViewModel : ViewModelBase ,IMainModule
         PointerMovedCommand = ReactiveCommand.Create<Point>(OnPointerMoved);
         PointerReleasedCommand = ReactiveCommand.Create(OnPointerReleased);
         ClearCommand = ReactiveCommand.Create(Clear);
-    }
+        Materials.Add(new ImageMateiral() { X = 400,Y=800,Width=500,Height=500});
+
+	}
     
     
     private void OnPointerPressed(Point point)
