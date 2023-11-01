@@ -8,8 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea2f4211-d6bb-4011-ad91-9da8716bdf7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Models/MaterialBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Models/MaterialBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ViewModels/DrawingBoardViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ViewModels/DrawingBoardViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/DrawingBoardView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/DrawingBoardView.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia/Controls/ImageElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Controls/ImageElement.cs" afterDir="false" />
     </list>
@@ -26,26 +26,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Administrator\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Administrator\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="MangoWidgets.Avalonia.Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -75,6 +75,10 @@
       <option name="presentableId" value="Default" />
       <updated>1698732435519</updated>
       <workItem from="1698732436621" duration="404000" />
+      <workItem from="1698741758988" duration="125000" />
+      <workItem from="1698742309475" duration="595000" />
+      <workItem from="1698801470444" duration="2639000" />
+      <workItem from="1698810209200" duration="2357000" />
     </task>
     <servers />
   </component>
@@ -83,24 +87,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MangoWidgets.Avalonia/Controls/DragCanvas.cs</url>
-          <line>27</line>
-          <properties documentPath="F:\CodeRepository\CSharp\ZBH.Class\MangoWidgets.Avalonia\MangoWidgets.Avalonia\Controls\DragCanvas.cs" initialLine="27" containingFunctionPresentation="Method 'OnPointerPressed'">
-            <startOffsets>
-              <option value="748" />
-            </startOffsets>
-            <endOffsets>
-              <option value="792" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

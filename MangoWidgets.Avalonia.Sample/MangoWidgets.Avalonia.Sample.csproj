@@ -6,6 +6,11 @@
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        
+        <PublishAot>true</PublishAot>
+        <TrimMode>full</TrimMode>
+        <RunAOTCompilation>True</RunAOTCompilation> 
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,6 +26,7 @@
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.4" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.4" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.2" />
 
         <PackageReference Include="ReactiveUI.Fody" Version="19.4.1" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />

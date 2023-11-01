@@ -1,12 +1,14 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using MangoWidgets.Avalonia.AttachtedProperties;
 
 namespace MangoWidgets.Avalonia.Controls;
 
-public class ImageElement : Control
+public class ImageElement : ContentControl
 {
 	public IImage Source
 	{
@@ -14,6 +16,20 @@ public class ImageElement : Control
 		set => SetValue(SourceProperty, value);
 	}
 	public static readonly StyledProperty<IImage> SourceProperty = AvaloniaProperty.Register<ImageElement, IImage>(nameof(Source));
+
+	public double Ratio
+	{
+		get => GetValue(RatioProperty);
+		set => SetValue(RatioProperty, value);
+	}
+	public static readonly StyledProperty<double> RatioProperty = AvaloniaProperty.Register<ImageElement, double>(nameof(Ratio));
+
+	protected override void OnLoaded(RoutedEventArgs e)
+	{
+		base.OnLoaded(e);
+		if (this.Parent is not Control control) return;
+		control.ZIndex = -1;
+	}
 
 	protected override void OnPointerPressed(PointerPressedEventArgs e)
 	{
