@@ -7,15 +7,106 @@
                                 xmlns:models="clr-namespace:MangoWidgets.Avalonia.Sample.Models"
                                 xmlns:reactiveUi="http://reactiveui.net"
                                 xmlns:viewModels="clr-namespace:MangoWidgets.Avalonia.Sample.ViewModels"
-                                xmlns:attachedProperties="clr-namespace:MangoWidgets.Avalonia.AttachedProperties;assembly=MangoWidgets.Avalonia"
+                                xmlns:attachedProperties="clr-namespace:MangoWidgets.Avalonia.AttachtedProperties;assembly=MangoWidgets.Avalonia"
                                 d:DesignHeight="450"
                                 d:DesignWidth="800"
+								             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
                                 x:DataType="viewModels:DrawingBoardViewModel"
                                 x:TypeArguments="viewModels:DrawingBoardViewModel"
                                 mc:Ignorable="d">
     <Design.DataContext>
         <viewModels:DrawingBoardViewModel />
     </Design.DataContext>
+	<Control.Resources>
+		<ControlTheme x:Key="ImageElementTheme" TargetType="controls:ImageElement">
+			<Setter Property="ClipToBounds" Value="False"/>
+			<Setter Property="Template">
+				<ControlTemplate>
+					<Panel>
+						<Panel Name="PART_DragThumbHost"
+							   IsVisible="{Binding $self.(attachedProperties:DraggedElement.CanDragged),RelativeSource={RelativeSource TemplatedParent}}">
+							<Panel.Resources>
+								<ControlTheme x:Key="ThumbTheme" TargetType="Thumb">
+									<Setter Property="Width" Value="24"/>
+									<Setter Property="Height" Value="24"/>
+									<Setter Property="CornerRadius" Value="12"/>
+									<Setter Property="Template">
+										<ControlTemplate>
+											<ContentPresenter x:Name="PART_ContentPresenter"
+															  BorderBrush="{TemplateBinding BorderBrush}"
+															  Background="{TemplateBinding Background}"
+															  CornerRadius="{TemplateBinding CornerRadius}"
+															  BorderThickness="{TemplateBinding BorderThickness}"/>
+										</ControlTemplate>
+									</Setter>
+								</ControlTheme>
+							</Panel.Resources>
+							<Thumb Cursor="LeftSide"
+								   Margin="-12,0,0,0"
+								   Background="Red"
+								   Theme="{StaticResource ThumbTheme}"
+								   HorizontalAlignment="Left"/>
+							<Thumb Cursor="RightSide"
+									Background="Red"
+									Margin="0,0,-12,0"
+								   Theme="{StaticResource ThumbTheme}"
+									HorizontalAlignment="Right"/>
+							<Thumb Width="24"
+									Height="24"
+									Cursor="TopSide"
+									Background="Red"
+									Margin="0,-12,0,0"
+									Theme="{StaticResource ThumbTheme}"
+									VerticalAlignment="Top"/>
+							<Thumb Width="24"
+									Height="24"
+									Cursor="BottomSide"
+									Background="Red"
+									Margin="0,0,0,-12"
+									Theme="{StaticResource ThumbTheme}"
+									VerticalAlignment="Bottom"/>
+							<Thumb Width="24"
+									Height="24"
+									Background="Red"
+									Margin="-12,-12,0,0"
+									Cursor="TopLeftCorner"
+									HorizontalAlignment="Left"
+									Theme="{StaticResource ThumbTheme}"
+									VerticalAlignment="Top"/>
+							<Thumb Width="24"
+									Height="24"
+									Background="Red"
+									Margin="0,-12,-12,0"
+									Cursor="TopRightCorner"
+									HorizontalAlignment="Right"
+									Theme="{StaticResource ThumbTheme}"
+									VerticalAlignment="Top"/>
+							<Thumb Width="24"
+									Height="24"
+									Background="Red"
+									Margin="-12,0,0,-12"
+									Cursor="BottomLeftCorner"
+									HorizontalAlignment="Left"
+									Theme="{StaticResource ThumbTheme}"
+									VerticalAlignment="Bottom"/>
+							<Thumb Width="24"
+									Height="24"
+									Background="Red"
+									Margin="0,0,-12,-12"
+									Cursor="BottomRightCorner"
+									Theme="{StaticResource ThumbTheme}"
+									HorizontalAlignment="Right"
+									VerticalAlignment="Bottom"/>
+						</Panel>
+						<ContentPresenter x:Name="PART_ContentPresenter"
+										Content="{TemplateBinding Content}"
+										Margin="{TemplateBinding Padding}"/>
+					</Panel>
+				</ControlTemplate>
+			</Setter>
+		</ControlTheme>
+	</Control.Resources>
     <Panel>
         <Viewbox>
             <ItemsControl Name="MaterialHost"
@@ -43,8 +134,10 @@
 						</DataTemplate>
 						<DataTemplate DataType="models:ImageMateiral">
 							<controls:ImageElement Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg"
-												   Width="{Binding Width}"
-												   Height="{Binding Height}"/>
+				                                   Width="{Binding Width}"
+												   Theme="{StaticResource ImageElementTheme}"
+				                                   Height="{Binding Height}">
+							</controls:ImageElement>
 						</DataTemplate>
 					</ItemsControl.DataTemplates>
 				</ItemsControl>
