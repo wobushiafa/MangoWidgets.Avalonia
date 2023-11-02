@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:MangoWidgets.Avalonia.Controls">
+                    xmlns:controls="clr-namespace:MangoWidgets.Avalonia.Controls"
+                    x:ClassModifier="internal">
     <!--  Add Resources Here  -->
-    <ControlTheme x:Key="DialogHost" TargetType="controls:DialogHost">
+    <ControlTheme x:Key="{x:Type controls:DialogHost}" TargetType="controls:DialogHost">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -30,22 +31,23 @@
                 </Panel>
             </ControlTemplate>
         </Setter>
+
+        <Style Selector="^ /template/Panel#PART_LayoutRoot">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Easing="QuarticEaseOut"
+                                      Property="Opacity"
+                                      Duration="0:0:0.5" />
+                </Transitions>
+            </Setter>
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^:shown /template/Panel#PART_LayoutRoot">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Opacity" Value="1" />
+        </Style>
     </ControlTheme>
 
-    <Style Selector="^ /template/Panel#PART_LayoutRoot">
-        <Setter Property="Transitions">
-            <Transitions>
-                <DoubleTransition Easing="QuarticEaseOut"
-                                  Property="Opacity"
-                                  Duration="0:0:0.5" />
-            </Transitions>
-        </Setter>
-        <Setter Property="IsVisible" Value="False" />
-        <Setter Property="Opacity" Value="0" />
-    </Style>
-
-    <Style Selector="^:shown /template/Panel#PART_LayoutRoot">
-        <Setter Property="IsVisible" Value="True" />
-        <Setter Property="Opacity" Value="1" />
-    </Style>
 </ResourceDictionary>
