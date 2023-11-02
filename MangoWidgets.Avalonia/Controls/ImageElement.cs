@@ -4,18 +4,20 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using MangoWidgets.Avalonia.AttachtedProperties;
+using MangoWidgets.Avalonia.Extensions;
 
 namespace MangoWidgets.Avalonia.Controls;
 
 public class ImageElement : ContentControl
 {
-	public IImage Source
+	public string Source
 	{
 		get => GetValue(SourceProperty);
 		set => SetValue(SourceProperty, value);
 	}
-	public static readonly StyledProperty<IImage> SourceProperty = AvaloniaProperty.Register<ImageElement, IImage>(nameof(Source));
+	public static readonly StyledProperty<string> SourceProperty = AvaloniaProperty.Register<ImageElement, string>(nameof(Source));
 
 	public double Ratio
 	{
@@ -41,6 +43,8 @@ public class ImageElement : ContentControl
 	public override void Render(DrawingContext context)
 	{
 		base.Render(context);
-		context.DrawImage(Source,new Rect(0,0,this.Bounds.Width, this.Bounds.Height));
+		var bitmap = Source.ToBitmap();
+		if (bitmap is null) return;
+		context.DrawImage(bitmap,new Rect(0,0,this.Bounds.Width, this.Bounds.Height));
 	}
 }

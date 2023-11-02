@@ -41,6 +41,7 @@ public class ResizeThumb : Thumb
 			double deltaVertical = 0;
 			double deltaHorizontal = 0;
 			double height, width;
+			var(newLeft,newTop) = (0d,0d);
 			switch (DragDirection)
 			{
 				case DragDirection.TopLeft:
@@ -49,19 +50,22 @@ public class ResizeThumb : Thumb
 						deltaHorizontal = Math.Min(e.Vector.X, target.Width - target.MinWidth);
 						width = target.Width - deltaHorizontal;
 						height = width / Ratio;
-						Canvas.SetLeft(parent, originLeft + deltaHorizontal);
-						Canvas.SetTop(parent, originTop + target.Height - height);
+						(newLeft,newTop) = (originLeft + deltaHorizontal,originTop + target.Height - height);
+						if (newLeft < 0 || newTop < 0) return;
+						Canvas.SetLeft(parent, newLeft);
+						Canvas.SetTop(parent, newTop);
 						target.Width = width;
 						target.Height = height;
 					}
 					else
 					{
 						deltaVertical = Math.Min(e.Vector.Y, target.Height - target.MinHeight);
-
 						height = target.Height - deltaVertical;
 						width = height * Ratio;
-						Canvas.SetTop(parent, originTop + deltaVertical);
-						Canvas.SetLeft(parent, originLeft + target.Width - width);
+						(newLeft,newTop) = ((originLeft + target.Width - width),(originTop + deltaVertical));
+						if (newLeft < 0 || newTop < 0) return;
+						Canvas.SetLeft(parent, newLeft);
+						Canvas.SetTop(parent, newTop);
 						target.Height = height;
 						target.Width = width;
 					}
@@ -69,11 +73,12 @@ public class ResizeThumb : Thumb
 
 				case DragDirection.TopCenter:
 					deltaVertical = Math.Min(e.Vector.Y, target.Height - target.MinHeight);
-
 					height = target.Height - deltaVertical;
 					width = height * Ratio;
-					Canvas.SetTop(parent, originLeft + deltaVertical);
-					Canvas.SetLeft(parent, originTop + target.Width - width);
+					(newLeft,newTop) = (originLeft + target.Width - width,originTop + deltaVertical);
+					if (newLeft < 0 || newTop < 0) return;
+					Canvas.SetLeft(parent,newLeft);
+					Canvas.SetTop(parent, newTop);
 					target.Height = height;
 					target.Width = width;
 					break;
@@ -84,6 +89,8 @@ public class ResizeThumb : Thumb
 						deltaHorizontal = Math.Min(-e.Vector.X, target.Width - target.MinWidth);
 						width = target.Width - deltaHorizontal;
 						height = width / Ratio;
+						newTop = originTop + target.Height - height;
+						if (newTop < 0) return;
 						Canvas.SetTop(parent, originTop + target.Height - height);
 						target.Width = width;
 						target.Height = height;
@@ -94,7 +101,8 @@ public class ResizeThumb : Thumb
 
 						height = target.Height - deltaVertical;
 						width = height * Ratio;
-
+						newTop = originTop + deltaVertical;
+						if (newTop < 0) return;
 						Canvas.SetTop(parent, originTop + deltaVertical);
 						target.Height = height;
 						target.Width = width;
@@ -105,7 +113,9 @@ public class ResizeThumb : Thumb
 					deltaHorizontal = Math.Min(e.Vector.X, target.Width - target.MinWidth);
 					width = target.Width - deltaHorizontal;
 					height = (double)width / Ratio;
-					Canvas.SetLeft(parent, originLeft + deltaHorizontal);
+					newLeft = originLeft + deltaHorizontal;
+					if(newLeft < 0)return;
+					Canvas.SetLeft(parent, newLeft);
 					target.Width = width;
 					target.Height = height;
 					break;
@@ -127,7 +137,10 @@ public class ResizeThumb : Thumb
 						deltaHorizontal = Math.Min(e.Vector.X, target.Width - target.MinWidth);
 						width = target.Width - deltaHorizontal;
 						height = width / Ratio;
-						Canvas.SetLeft(parent, originLeft + deltaHorizontal);
+						
+						newLeft = originLeft + deltaHorizontal;
+						if(newLeft < 0)return;
+						Canvas.SetLeft(parent, newLeft);
 						target.Width = width;
 						target.Height = height;
 					}
