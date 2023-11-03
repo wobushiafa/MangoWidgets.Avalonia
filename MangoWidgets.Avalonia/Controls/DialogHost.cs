@@ -8,6 +8,7 @@ using MangoWidgets.Avalonia.Contracts;
 
 namespace MangoWidgets.Avalonia.Controls;
 
+[TemplatePart("PART_LayoutRoot", typeof(Panel))]
 [PseudoClasses(Shown)]
 public class DialogHost : ContentControl, IDialogHost
 {
@@ -41,7 +42,7 @@ public class DialogHost : ContentControl, IDialogHost
     public static readonly StyledProperty<double> DialogWidthProperty =
         AvaloniaProperty.Register<DialogHost, double>(nameof(DialogWidth));
     public static readonly StyledProperty<IBrush> ShadeBrushProperty =
-        AvaloniaProperty.Register<DialogHost, IBrush>(nameof(ShadeBrush));
+        AvaloniaProperty.Register<DialogHost, IBrush>(nameof(ShadeBrush),new SolidColorBrush(Brushes.Black.Color,0.3));
     
     
     public event EventHandler<RoutedEventArgs> Opened
@@ -88,14 +89,18 @@ public class DialogHost : ContentControl, IDialogHost
         return true;
     }
 
-    protected override Type StyleKeyOverride => Type.GetType(nameof(DialogHost))!;
+    // protected override Type StyleKeyOverride => Type.GetType(nameof(DialogHost))!;
     private TaskCompletionSource<object?>? _tsc ;
     private void OnContentClosed(IDialogContent sender, object? result)
     {
-        _tsc?.TrySetResult(result);
-        sender.Closed -= OnContentClosed;
-        IsShown = false;
-        Content = null;
+        Dispatcher.UIThread.Invoke(() =>
+        {
+            _tsc?.TrySetResult(result);
+            sender.Closed -= OnContentClosed;
+            IsShown = false;
+            Content = null;
+            PseudoClasses.Set(Shown, IsShown);
+        });
     }
     
     public void CloseDialog()
@@ -108,7 +113,7 @@ public class DialogHost : ContentControl, IDialogHost
             IsShown = false;
             Content = null;
             _tsc = null;
-            PseudoClasses.Set(Shown, false);
+            PseudoClasses.Set(Shown, IsShown);
         });
     }
 
@@ -116,13 +121,14 @@ public class DialogHost : ContentControl, IDialogHost
     {
         if(_tsc is not null)
             CloseDialog();
-        Dispatcher.UIThread.Invoke(() =>
+		_tsc = new TaskCompletionSource<object?>();
+		Dispatcher.UIThread.Invoke(() =>
         {
             Content = content;
             content.Closed -= OnContentClosed;
             content.Closed += OnContentClosed;
             IsShown = true;
-            PseudoClasses.Set(Shown, true);
+            PseudoClasses.Set(Shown, IsShown);
         });
         return _tsc!.Task;
     }

@@ -1,9 +1,61 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:MangoWidgets.Avalonia.Controls"
-                    x:ClassModifier="internal">
-    <!--  Add Resources Here  -->
-    <ControlTheme x:Key="{x:Type controls:DialogHost}" TargetType="controls:DialogHost">
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MangoWidgets.Avalonia.Controls"
+        xmlns:local="clr-namespace:MangoWidgets.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|DialogHost">
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="PART_LayoutRoot"
+                       Background="{TemplateBinding ShadeBrush}"
+                       IsVisible="False"
+                       Opacity="0">
+                    <Panel.Transitions>
+                        <Transitions>
+                            <DoubleTransition Easing="QuarticEaseOut"
+                                              Property="Opacity"
+                                              Duration="0:0:0.5" />
+                        </Transitions>
+                    </Panel.Transitions>
+                    <ScrollViewer Name="PART_ScrollViewer"
+                                  BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}"
+                                  HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          CornerRadius="{TemplateBinding CornerRadius}" />
+                    </ScrollViewer>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="controls|DialogHost:shown">
+        <Setter Property="IsHitTestVisible" Value="True" />
+    </Style>
+    <Style Selector="controls|DialogHost /template/ Panel#PART_LayoutRoot">
+        <Setter Property="IsVisible" Value="False" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="controls|DialogHost:shown /template/ Panel#PART_LayoutRoot">
+        <Setter Property="IsVisible" Value="True" />
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+
+    <!--  Add Styles Here  -->
+    <!--<ControlTheme x:Key="DialogHost" TargetType="{x:Type controls:DialogHost}">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -11,7 +63,7 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="controls:DialogHost">
+            <ControlTemplate>
                 <Panel Name="PART_LayoutRoot" Background="{TemplateBinding ShadeBrush}">
                     <ScrollViewer Name="PART_ScrollViewer"
                                   BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}"
@@ -32,7 +84,7 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^ /template/Panel#PART_LayoutRoot">
+        <Style Selector="^ /template/ Panel#PART_LayoutRoot">
             <Setter Property="Transitions">
                 <Transitions>
                     <DoubleTransition Easing="QuarticEaseOut"
@@ -44,10 +96,10 @@
             <Setter Property="Opacity" Value="0" />
         </Style>
 
-        <Style Selector="^:shown /template/Panel#PART_LayoutRoot">
+        <Style Selector="^:shown /template/ Panel#PART_LayoutRoot">
             <Setter Property="IsVisible" Value="True" />
             <Setter Property="Opacity" Value="1" />
         </Style>
-    </ControlTheme>
+    </ControlTheme>-->
 
-</ResourceDictionary>
+</Styles>
