@@ -30,8 +30,6 @@ public class DrawingBoardViewModel : ViewModelBase ,IMainModule
         PointerMovedCommand = ReactiveCommand.Create<Point>(OnPointerMoved);
         PointerReleasedCommand = ReactiveCommand.Create(OnPointerReleased);
         ClearCommand = ReactiveCommand.Create(Clear);
-
-		Materials.Add(new ImageMateiral() { X = 400d, Y = 800d, Width = 500, Height = 500 });
 	}
 
 

@@ -15,4 +15,18 @@ public class ImageMateiral : MaterialBase
 		get => _height;
 		set => SetField(ref _height,value);
 	}
+
+	private double _ratio;
+	public double Ratio
+	{
+		get => _ratio;
+		set => SetField(ref _ratio,value);
+	}
+
+	private string? _source;
+	public string? Source
+	{
+		get => _source;
+		set => SetField(ref _source, value);
+	}
 }

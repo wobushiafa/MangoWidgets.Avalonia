@@ -49,6 +49,24 @@
         <Setter Property="IsVisible" Value="False" />
         <Setter Property="Opacity" Value="0" />
     </Style>
+    <Style Selector="controls|DialogHost /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="controls|DialogHost:shown /template/ ContentPresenter#PART_ContentPresenter">
+        <Style.Animations>
+            <Animation Delay="0:0:0.5"
+                       Easing="LinearEasing"
+                       FillMode="Forward"
+                       Duration="0:0:0.3">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Opacity" Value="0.0" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Opacity" Value="1.0" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
     <Style Selector="controls|DialogHost:shown /template/ Panel#PART_LayoutRoot">
         <Setter Property="IsVisible" Value="True" />
         <Setter Property="Opacity" Value="1" />

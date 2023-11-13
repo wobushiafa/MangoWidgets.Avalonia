@@ -31,10 +31,9 @@ public static class ImageExtension
     
     public static Bitmap? ToBitmap(this string fileName)
     {
-        if (!File.Exists(fileName))
-            throw new FileNotFoundException($"File Not Found:{fileName}");
+        /*if (!File.Exists(fileName))
+            throw new FileNotFoundException($"File Not Found:{fileName}");*/
         using var fs = File.OpenRead(fileName);
         return new Bitmap(fs);
     }
-    
 }

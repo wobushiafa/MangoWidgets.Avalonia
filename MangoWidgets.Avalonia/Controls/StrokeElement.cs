@@ -117,7 +117,6 @@ public class StrokeElement : Control
                 var point = new Point(current.X, current.Y);
                 DrawBezier(ctx, lstPoint, point);
             }
-
         context.DrawGeometry(null, _pen, geometry);
     }
 
@@ -143,4 +142,5 @@ public class StrokeElement : Control
             }
         }
     }
+    
 }

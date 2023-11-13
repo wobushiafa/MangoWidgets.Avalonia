@@ -148,12 +148,11 @@
                                                 StrokeThickness="{Binding Thickness, Mode=OneWay}" />
                     </DataTemplate>
                     <DataTemplate DataType="models:ImageMateiral">
-                        <controls:ImageElement Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg"
-                                               Width="{Binding Width}"
-											   Ratio="1.333"
-                                               Theme="{StaticResource ImageElementTheme}"
-                                               Height="{Binding Height}">
-                        </controls:ImageElement>
+                        <controls:ImageElement Width="{Binding Width}"
+                                               Height="{Binding Height}"
+                                               Ratio="{Binding Ratio}"
+                                               Source="{Binding Source}"
+                                               Theme="{StaticResource ImageElementTheme}" />
                     </DataTemplate>
                 </ItemsControl.DataTemplates>
             </ItemsControl>

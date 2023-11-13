@@ -7,11 +7,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea2f4211-d6bb-4011-ad91-9da8716bdf7c" name="Changes" comment="">
+    <list default="true" id="93818f92-e7e5-4248-9d0c-91fc8a1ae628" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ViewModels/TestViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/TestView.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/TestView.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ApplicationServiceExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ApplicationServiceExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Models/ImageMateiral.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Models/ImageMateiral.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ViewModels/DrawingBoardViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ViewModels/DrawingBoardViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ViewModels/MainWindowViewModel.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/DrawingBoardView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/DrawingBoardView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia/Controls/ImageElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Controls/ImageElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/MainWindow.axaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/Views/MainWindow.axaml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia/Extensions/ImageExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Extensions/ImageExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia/Styles/DialogHost.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Styles/DialogHost.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,31 +30,31 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2XW6LFftuBVKC1XIolzzhMcxg0B" />
+  <component name="ProjectId" id="2XqBiOgJ3UeBAPGhhZA6MMcAIEX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Administrator\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Administrator\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Administrator\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="MangoWidgets.Avalonia.Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -69,16 +78,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ea2f4211-d6bb-4011-ad91-9da8716bdf7c" name="Changes" comment="" />
-      <created>1698732435519</created>
+      <changelist id="93818f92-e7e5-4248-9d0c-91fc8a1ae628" name="Changes" comment="" />
+      <created>1699346859665</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1698732435519</updated>
-      <workItem from="1698732436621" duration="404000" />
-      <workItem from="1698741758988" duration="125000" />
-      <workItem from="1698742309475" duration="595000" />
-      <workItem from="1698801470444" duration="2639000" />
-      <workItem from="1698810209200" duration="2357000" />
+      <updated>1699346859665</updated>
+      <workItem from="1699346860800" duration="2213000" />
     </task>
     <servers />
   </component>

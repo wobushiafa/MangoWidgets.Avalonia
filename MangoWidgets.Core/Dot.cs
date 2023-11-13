@@ -7,8 +7,8 @@ public struct Dot
     public int Y { get; set; }
     
     public ulong Timestamp { get; set; }
-    
-    public int Force { get; set; }
+
+    public double Force { get; set; } = 0.5f;
     
     public Dot(int x,int y)
     {
