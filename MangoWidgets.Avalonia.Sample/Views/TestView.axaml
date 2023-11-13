@@ -1,0 +1,31 @@
+﻿<reactiveUi:ReactiveUserControl x:Class="MangoWidgets.Avalonia.Sample.Views.TestUserControl"
+                                xmlns="https://github.com/avaloniaui"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                xmlns:reactiveUi="http://reactiveui.net"
+                                xmlns:vm="clr-namespace:MangoWidgets.Avalonia.Sample.ViewModels"
+                                d:DesignHeight="450"
+                                d:DesignWidth="800"
+                                x:DataType="vm:TestViewModel"
+                                x:TypeArguments="vm:TestViewModel"
+                                mc:Ignorable="d">
+    <Control.Styles>
+        <Style Selector=":is(ListBox)">
+            <Setter Property="ItemsPanel">
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter>
+        </Style>
+    </Control.Styles>
+    <ListBox ItemsSource="{Binding SampleData, Mode=OneWay}">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding .}" />
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</reactiveUi:ReactiveUserControl>
