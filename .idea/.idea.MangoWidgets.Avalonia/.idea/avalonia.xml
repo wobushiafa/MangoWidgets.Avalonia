@@ -5,6 +5,8 @@
       <map>
         <entry key="MangoWidgets.Avalonia.Sample/Views/DrawingBoardView.axaml" value="MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" />
         <entry key="MangoWidgets.Avalonia.Sample/Views/TestUserControl.axaml" value="MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" />
+        <entry key="MangoWidgets.Avalonia.Sample/Views/TestView.axaml" value="MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" />
+        <entry key="MangoWidgets.Avalonia.Sample/Views/ZoomView.axaml" value="MangoWidgets.Avalonia.Sample/MangoWidgets.Avalonia.Sample.csproj" />
       </map>
     </option>
   </component>

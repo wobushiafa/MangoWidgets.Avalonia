@@ -48,7 +48,6 @@ public class ZoomContentControl : ContentControl
         if (!this.TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
         ApplyZoom(this.Zoom,scaleTransform,translateTransform);
     }
-
     private static void HandleContentChanged(ZoomContentControl sender, AvaloniaPropertyChangedEventArgs e)
     {
         if (sender.Presenter?.Child is not { } ctrl) return;
@@ -58,7 +57,7 @@ public class ZoomContentControl : ContentControl
     }
     private static void HandleZoomChanged(ZoomContentControl sender, AvaloniaPropertyChangedEventArgs e)
     {
-        if (!sender.CanZoom) return;
+        // if (!sender.CanZoom) return;
         if (!sender.EnsureTransformGroup(out var transformGroup)) return;
         if (!sender.TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
         if (e.NewValue is not Zoom zoom) return;
@@ -160,8 +159,6 @@ public class ZoomContentControl : ContentControl
     /// <param name="translateTransform"></param>
     private void RaiseZoomedEvent(ScaleTransform scaleTransform, TranslateTransform translateTransform)
     {
-        /*var moveX = translateTransform.X / Width;
-        var moveY = translateTransform.Y / Height;*/
         var args = new ZoomedEventArgs(ZoomedEvent, this,new Zoom(scaleTransform.ScaleX,scaleTransform.ScaleY,translateTransform.X,translateTransform.Y));
         RaiseEvent(args);
     }
