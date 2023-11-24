@@ -8,9 +8,85 @@
                                 xmlns:viewModels="clr-namespace:MangoWidgets.Avalonia.Sample.ViewModels"
                                 d:DesignHeight="450"
                                 d:DesignWidth="800"
+                                x:DataType="viewModels:ZoomViewModel"
                                 x:TypeArguments="viewModels:ZoomViewModel"
                                 mc:Ignorable="d">
-    <controls:ZoomContentControl CanZoom="True">
-        <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
-    </controls:ZoomContentControl>
+
+    <UniformGrid Columns="4" Rows="4">
+        <!--  ScaleX="{Binding ScaleX}"  -->
+        <!--  ScaleY="{Binding ScaleY}"  -->
+        <!--  TranslateX="{Binding TranslateX}"  -->
+        <!--  TranslateY="{Binding TranslateY}"  -->
+        <Border BorderBrush="Red" BorderThickness="2">
+            <controls:ZoomContentControl Name="MainZoom"
+                                         CanZoom="True"
+                                         Zoom="{Binding Zoom}">
+                <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+            </controls:ZoomContentControl>
+        </Border>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+
+
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+
+        <controls:ZoomContentControl CanZoom="True" Zoom="{Binding Zoom, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:ZoomContentControl>
+    </UniformGrid>
+
 </reactiveUi:ReactiveUserControl>

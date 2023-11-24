@@ -1,8 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Data;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using MangoWidgets.Core;
 
 namespace MangoWidgets.Avalonia.Controls;
 
@@ -10,32 +12,58 @@ public class ZoomContentControl : ContentControl
 {
     public static readonly StyledProperty<bool> CanZoomProperty
         = AvaloniaProperty.Register<ZoomContentControl, bool>(nameof(CanZoom));
+    
+    public static readonly StyledProperty<Zoom> ZoomProperty
+        = AvaloniaProperty.Register<ZoomContentControl, Zoom>(nameof(Zoom),Zoom.Default,false,BindingMode.TwoWay);
     public bool CanZoom
     {
         get => GetValue(CanZoomProperty);
-        set => SetValue(CanZoomProperty,value);
+        set => SetValue(CanZoomProperty, value);
+    }
+    public Zoom Zoom
+    {
+        get => GetValue(ZoomProperty);
+        set => SetValue(ZoomProperty, value);
     }
     
-    private static readonly RoutedEvent<ZoomedEventArgs> ZoomedEvent = RoutedEvent.Register<ZoomContentControl,ZoomedEventArgs>(nameof(Zoomed), RoutingStrategies.Bubble);
+    private static readonly RoutedEvent<ZoomedEventArgs> ZoomedEvent =
+        RoutedEvent.Register<ZoomContentControl, ZoomedEventArgs>(nameof(Zoomed), RoutingStrategies.Bubble);
     public event EventHandler<ZoomedEventArgs> Zoomed
     {
         add => AddHandler(ZoomedEvent, value);
         remove => RemoveHandler(ZoomedEvent, value);
     }
-    
+
     protected override Type StyleKeyOverride => typeof(ContentControl);
-    
+
     static ZoomContentControl()
     {
         ContentProperty.Changed.AddClassHandler<ZoomContentControl>(HandleContentChanged);
+        ZoomProperty.Changed.AddClassHandler<ZoomContentControl>(HandleZoomChanged);
+    }
+
+    protected override void OnLoaded(RoutedEventArgs e)
+    {
+        base.OnLoaded(e);
+        if (!this.TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
+        ApplyZoom(this.Zoom,scaleTransform,translateTransform);
     }
 
     private static void HandleContentChanged(ZoomContentControl sender, AvaloniaPropertyChangedEventArgs e)
     {
         if (sender.Presenter?.Child is not { } ctrl) return;
         ctrl.RenderTransform = CreateTransformGroup();
+        if (!sender.TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
+        sender.ApplyZoom(sender.Zoom,scaleTransform,translateTransform);
     }
-    
+    private static void HandleZoomChanged(ZoomContentControl sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        if (!sender.CanZoom) return;
+        if (!sender.EnsureTransformGroup(out var transformGroup)) return;
+        if (!sender.TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
+        if (e.NewValue is not Zoom zoom) return;
+        sender.ApplyZoom(zoom,scaleTransform,translateTransform);
+    }
     private static TransformGroup CreateTransformGroup()
     {
         var transformGroup = new TransformGroup();
@@ -43,7 +71,6 @@ public class ZoomContentControl : ContentControl
         transformGroup.Children.Add(new TranslateTransform());
         return transformGroup;
     }
-
     private bool EnsureTransformGroup(out TransformGroup transformGroup)
     {
         transformGroup = CreateTransformGroup();
@@ -55,12 +82,12 @@ public class ZoomContentControl : ContentControl
         }
         else
             transformGroup = ts;
+
         return true;
     }
-    
     private bool TryParseTransformGroup(out ScaleTransform scaleTransform, out TranslateTransform translateTransform)
     {
-        (scaleTransform,translateTransform) = (new ScaleTransform(),new TranslateTransform());
+        (scaleTransform, translateTransform) = (new ScaleTransform(), new TranslateTransform());
         if (Presenter is null) return false;
         if (Presenter?.Child?.RenderTransform is not TransformGroup ts)
         {
@@ -68,17 +95,18 @@ public class ZoomContentControl : ContentControl
             Presenter!.Child!.RenderTransform = ts;
             Presenter!.Child!.RenderTransformOrigin = RelativePoint.TopLeft;
         }
-        
+
         if (ts.Children.Count < 2)
             ts = CreateTransformGroup();
-        
+
         if (ts.Children[0] is not ScaleTransform s || ts.Children[1] is not TranslateTransform t)
         {
             ts = CreateTransformGroup();
             s = (ScaleTransform)ts.Children[0];
             t = (TranslateTransform)ts.Children[1];
         }
-        (scaleTransform,translateTransform) = (s,t);
+
+        (scaleTransform, translateTransform) = (s, t);
         return true;
         // switch (transformGroup.Children)
         // {
@@ -90,7 +118,6 @@ public class ZoomContentControl : ContentControl
         //         return true;
         // }
     }
-    
     /// <summary>
     /// 校正可视区域
     /// </summary>
@@ -114,30 +141,32 @@ public class ZoomContentControl : ContentControl
             translateTransform.X = translateTransform.X < widthOffset ? widthOffset : translateTransform.X > 0 ? 0 : translateTransform.X;
             translateTransform.Y = translateTransform.Y < heightOffset ? heightOffset : translateTransform.Y > 0 ? 0 : translateTransform.Y;
         }
+
+        this.Zoom = new Zoom(scaleTransform.ScaleX, scaleTransform.ScaleY, translateTransform.X, translateTransform.Y);
         RaiseZoomedEvent(scaleTransform, translateTransform);
     }
-
+    private void ApplyZoom(Zoom zoom, ScaleTransform scaleTransform, TranslateTransform translateTransform)
+    {
+        scaleTransform.ScaleX = zoom.ScaleX;
+        scaleTransform.ScaleY = zoom.ScaleY;
+        translateTransform.X = zoom.TranslateX;
+        translateTransform.Y = zoom.TranslateY;
+        RaiseZoomedEvent(scaleTransform, translateTransform);
+    }
     /// <summary>
     /// 触发Zoomed事件
     /// </summary>
     /// <param name="scaleTransform"></param>
     /// <param name="translateTransform"></param>
-    private void RaiseZoomedEvent(ScaleTransform scaleTransform,TranslateTransform translateTransform)
+    private void RaiseZoomedEvent(ScaleTransform scaleTransform, TranslateTransform translateTransform)
     {
-        var moveX = translateTransform.X / Width;
-        var moveY = translateTransform.Y / Height;
-        var args = new ZoomedEventArgs(ZoomedEvent,this)
-        {
-            ScaleX = scaleTransform.ScaleX,
-            ScaleY= scaleTransform.ScaleY,
-            MoveX= moveX is double.NaN ? 0 : moveX,
-            MoveY= moveY is double.NaN ? 0 : moveY,
-        };
+        /*var moveX = translateTransform.X / Width;
+        var moveY = translateTransform.Y / Height;*/
+        var args = new ZoomedEventArgs(ZoomedEvent, this,new Zoom(scaleTransform.ScaleX,scaleTransform.ScaleY,translateTransform.X,translateTransform.Y));
         RaiseEvent(args);
     }
-    
-    
-    #region  MouseEvent
+
+    #region MouseEvent
 
     private Point? _pressedPoint;
 
@@ -195,7 +224,7 @@ public class ZoomContentControl : ContentControl
     protected override void OnPointerWheelChanged(PointerWheelEventArgs e)
     {
         base.OnPointerWheelChanged(e);
-        
+
         if (!CanZoom) return;
         if (!EnsureTransformGroup(out var transformGroup)) return;
         if (!TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
@@ -210,16 +239,19 @@ public class ZoomContentControl : ContentControl
     }
 
     #endregion
-    
 }
 
 public class ZoomedEventArgs : RoutedEventArgs
 {
-    public double ScaleX { get; set; }
-    public double ScaleY { get; set; }
-    public double MoveX { get; set; }
-    public double MoveY { get; set; }
-    
-    public ZoomedEventArgs(RoutedEvent? routedEvent) :base (routedEvent){ }
-    public ZoomedEventArgs(RoutedEvent? routedEvent, object? source) : base(routedEvent, source){ }
+    public Zoom Zoom { get; set; }
+
+    public ZoomedEventArgs(RoutedEvent? routedEvent, Zoom zoome) : base(routedEvent)
+    {
+        Zoom = zoome;
+    }
+    public ZoomedEventArgs(RoutedEvent? routedEvent, object? source, Zoom zoome) : base(routedEvent, source)
+    {
+        Zoom = zoome;
+    }
 }
+
