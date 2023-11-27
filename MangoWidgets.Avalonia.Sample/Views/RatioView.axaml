@@ -1,0 +1,22 @@
+<reactiveUi:ReactiveUserControl x:Class="MangoWidgets.Avalonia.Sample.Views.RatioView"
+                                xmlns="https://github.com/avaloniaui"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:controls="clr-namespace:MangoWidgets.Avalonia.Controls;assembly=MangoWidgets.Avalonia"
+                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                xmlns:reactiveUi="http://reactiveui.net"
+                                xmlns:vm="clr-namespace:MangoWidgets.Avalonia.Sample.ViewModels"
+                                d:DesignHeight="450"
+                                d:DesignWidth="800"
+                                x:DataType="vm:RatioViewModel"
+                                x:TypeArguments="vm:RatioViewModel"
+                                mc:Ignorable="d">
+    <Panel>
+        <controls:RatioBox Ratio="{Binding Ratio, Mode=OneWay}">
+            <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
+        </controls:RatioBox>
+
+        <TextBox VerticalAlignment="Top" Text="{Binding Ratio, Mode=TwoWay}" />
+    </Panel>
+
+</reactiveUi:ReactiveUserControl>

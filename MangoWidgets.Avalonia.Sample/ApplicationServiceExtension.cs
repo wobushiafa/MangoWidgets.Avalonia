@@ -20,6 +20,8 @@ public static class ApplicationServiceExtension
             .AddTransient<IMainModule,DrawingBoardViewModel>()
             .AddTransient<IViewFor<TestViewModel>, TestView>()
             .AddTransient<IMainModule,TestViewModel>()
+            .AddTransient<IViewFor<RatioViewModel>, RatioView>()
+            .AddTransient<IMainModule, RatioViewModel>()
             ;
         
         return serviceCollection;
