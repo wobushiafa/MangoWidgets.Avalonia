@@ -8,9 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93818f92-e7e5-4248-9d0c-91fc8a1ae628" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/avalonia.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Behaviors/ControlEventCommands.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Behaviors/NativeEvent2CommandBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ApplicationServiceExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia.Sample/ApplicationServiceExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia/MangoWidgets.Avalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/MangoWidgets.Avalonia.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,12 +19,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia.Sample/ViewModels/ZoomViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia.Sample/Views/ZoomView.axaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia.Sample/Views/ZoomView.axaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia/Controls/ZoomContentControl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia/Controls/ZoomContentControl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia/Controls/ZoomContentControl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d8a5354b09db47eda5937b722f8095fc1ae600/c9/436d90e1/AvaloniaObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/354ff7be3c689badc677ac090bffd9297397c17c9b14e882f49f68cb8708552/Behavior.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/561d3ab512ec9bb1d839515bb136be7223c173e4eca1bcc4eb1c3b8817f67f/BehaviorOfT.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,7 +87,8 @@
       <workItem from="1700631543148" duration="3183000" />
       <workItem from="1700640868627" duration="1420000" />
       <workItem from="1700803698838" duration="9918000" />
-      <workItem from="1701049827477" duration="306000" />
+      <workItem from="1701049827477" duration="671000" />
+      <workItem from="1701055881280" duration="1287000" />
     </task>
     <task id="LOCAL-00001" summary="feat ZoomContentControl">
       <option name="closed" value="true" />
