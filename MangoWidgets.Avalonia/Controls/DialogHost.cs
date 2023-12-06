@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Threading;
@@ -9,6 +11,7 @@ using MangoWidgets.Avalonia.Contracts;
 namespace MangoWidgets.Avalonia.Controls;
 
 [TemplatePart("PART_LayoutRoot", typeof(Panel))]
+[TemplatePart("PART_ShadeBorder",typeof(Border))]
 [PseudoClasses(Shown)]
 public class DialogHost : ContentControl, IDialogHost
 {
@@ -35,6 +38,12 @@ public class DialogHost : ContentControl, IDialogHost
         set => SetValue(ShadeBrushProperty, value);
     }
 
+    public bool CanClickShadeClose
+    {
+        get => GetValue(CanClickShadeCloseProperty);
+        set => SetValue(CanClickShadeCloseProperty,value);
+    }
+
     public static readonly StyledProperty<bool> IsShownProperty =
         AvaloniaProperty.Register<DialogHost, bool>(nameof(IsShown));
     public static readonly StyledProperty<double> DialogHeightProperty =
@@ -43,6 +52,8 @@ public class DialogHost : ContentControl, IDialogHost
         AvaloniaProperty.Register<DialogHost, double>(nameof(DialogWidth));
     public static readonly StyledProperty<IBrush> ShadeBrushProperty =
         AvaloniaProperty.Register<DialogHost, IBrush>(nameof(ShadeBrush),new SolidColorBrush(Brushes.Black.Color,0.3));
+    public static readonly StyledProperty<bool> CanClickShadeCloseProperty =
+        AvaloniaProperty.Register<DialogHost, bool>(nameof(CanClickShadeClose));
     
     
     public event EventHandler<RoutedEventArgs> Opened
@@ -72,7 +83,26 @@ public class DialogHost : ContentControl, IDialogHost
         var newEvent = new RoutedEventArgs(ClosedEvent, this);
         RaiseEvent(newEvent);
     }
+
+    private Border? _shade;
     
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+        if (_shade is not null)
+        {
+            _shade.PointerPressed -= OnShadePointerPressed;
+        }
+        _shade = e.NameScope.Find<Border>("PART_ShadeBorder")!;
+        _shade.PointerPressed += OnShadePointerPressed;
+    }
+
+    private void OnShadePointerPressed(object sender, PointerPressedEventArgs e)
+    {
+        if(CanClickShadeClose)
+            this.CloseCurrentDialog();
+    }
+
     public bool Show()
     {
         if (IsShown)
@@ -93,23 +123,16 @@ public class DialogHost : ContentControl, IDialogHost
     private TaskCompletionSource<object?>? _tsc ;
     private void OnContentClosed(IDialogContent sender, object? result)
     {
-        Dispatcher.UIThread.Invoke(() =>
-        {
-            _tsc?.TrySetResult(result);
-            sender.Closed -= OnContentClosed;
-            IsShown = false;
-            Content = null;
-            PseudoClasses.Set(Shown, IsShown);
-        });
+        CloseCurrentDialog();
     }
     
-    public void CloseDialog()
+    public void CloseCurrentDialog()
     {
         Dispatcher.UIThread.Invoke(() =>
         {
-            _tsc?.TrySetResult(null);
             if (Content is IDialogContent content)
                 content.Closed -= OnContentClosed;
+            _tsc?.TrySetResult(null);
             IsShown = false;
             Content = null;
             _tsc = null;
@@ -120,7 +143,7 @@ public class DialogHost : ContentControl, IDialogHost
     public Task<object?> ShowDialogAsync(IDialogContent content)
     {
         if(_tsc is not null)
-            CloseDialog();
+            CloseCurrentDialog();
 		_tsc = new TaskCompletionSource<object?>();
 		Dispatcher.UIThread.Invoke(() =>
         {
