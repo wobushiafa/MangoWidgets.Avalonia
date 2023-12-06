@@ -2,6 +2,7 @@
 using System.Reactive.Linq;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Platform;
@@ -20,6 +21,9 @@ public class StrokeElement : Control
 
     public static readonly StyledProperty<double> StrokeThicknessProperty =
         AvaloniaProperty.Register<StrokeElement, double>(nameof(StrokeThickness), 1d);
+    
+    public static readonly StyledProperty<PenType> PenTypeProperty =
+        AvaloniaProperty.Register<StrokeElement, PenType>(nameof(PenType), PenType.Normal);
 
     public ICollection<Dot> Points
     {
@@ -38,12 +42,19 @@ public class StrokeElement : Control
         get => GetValue(StrokeThicknessProperty);
         set => SetValue(StrokeThicknessProperty, value);
     }
+    
+    public PenType PenType
+    {
+        get => GetValue(PenTypeProperty);
+        set => SetValue(PenTypeProperty, value);
+    }
 
     static StrokeElement()
     {
         PointsProperty.Changed.AddClassHandler<StrokeElement>((x, e) => OnPointsChangedCallback(e));
         StrokeProperty.Changed.AddClassHandler<StrokeElement>((x, e) => OnStrokeStyleChangedCallback(e));
         StrokeThicknessProperty.Changed.AddClassHandler<StrokeElement>((x, e) => OnStrokeStyleChangedCallback(e));
+        PenTypeProperty.Changed.AddClassHandler<StrokeElement>((x, e) => OnStrokeStyleChangedCallback(e));
     }
 
     protected override void OnLoaded(RoutedEventArgs e)
@@ -69,7 +80,8 @@ public class StrokeElement : Control
     {
         if (e.Sender is not StrokeElement strokeElement) return;
         strokeElement.CreatePen(strokeElement.GetValue(StrokeProperty),
-            strokeElement.GetValue(StrokeThicknessProperty));
+            strokeElement.GetValue(StrokeThicknessProperty),
+            strokeElement.GetValue(PenTypeProperty));
         strokeElement.InvalidateVisual();
     }
 
@@ -94,9 +106,15 @@ public class StrokeElement : Control
 
     private Pen _pen = new(Brushes.Black, 2, null, PenLineCap.Round, PenLineJoin.Round);
 
-    private void CreatePen(IBrush stroke, double strokeThickness)
+    private void CreatePen(IBrush stroke, double strokeThickness, PenType penType)
     {
-        _pen = new Pen(stroke, strokeThickness, null, PenLineCap.Round, PenLineJoin.Round);
+        _pen = penType == PenType.Normal ? new Pen(stroke, strokeThickness, null, PenLineCap.Round, PenLineJoin.Round)
+            : _pen = new Pen(stroke, strokeThickness * 3, null, PenLineCap.Square,PenLineJoin.Bevel);
+        this.Opacity = penType == PenType.Normal ? 1d : 0.5d;
+        if (this.Parent is ContentPresenter contentPresenter)
+        {
+            contentPresenter.SetValue(Canvas.ZIndexProperty, penType == PenType.Normal ? 0 : -1);
+        }
     }
 
 

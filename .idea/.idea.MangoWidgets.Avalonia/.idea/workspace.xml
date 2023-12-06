@@ -8,15 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93818f92-e7e5-4248-9d0c-91fc8a1ae628" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Behaviors/ControlEventCommands.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/Behaviors/NativeEvent2CommandBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MangoWidgets.Avalonia/MangoWidgets.Avalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MangoWidgets.Avalonia/MangoWidgets.Avalonia.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;wobushiafa&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="ad8f1742-6928-40cd-a98d-a6d63ea1269f" />
+        <option name="url" value="https://github.com/wobushiafa/MangoWidgets.Avalonia" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d8a5354b09db47eda5937b722f8095fc1ae600/c9/436d90e1/AvaloniaObject.cs" root0="SKIP_HIGHLIGHTING" />
@@ -89,6 +100,7 @@
       <workItem from="1700803698838" duration="9918000" />
       <workItem from="1701049827477" duration="671000" />
       <workItem from="1701055881280" duration="1287000" />
+      <workItem from="1701074519169" duration="1222000" />
     </task>
     <task id="LOCAL-00001" summary="feat ZoomContentControl">
       <option name="closed" value="true" />
@@ -106,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700811586416</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat add event2commandbehavior">
+      <option name="closed" value="true" />
+      <created>1701074599467</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701074599467</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +137,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="feat ZoomContentControl" />
     <MESSAGE value="fix 变焦控件逻辑优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix 变焦控件逻辑优化" />
+    <MESSAGE value="feat add event2commandbehavior" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat add event2commandbehavior" />
   </component>
 </project>
