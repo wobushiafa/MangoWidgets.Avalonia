@@ -7,9 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93818f92-e7e5-4248-9d0c-91fc8a1ae628" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MangoWidgets.Avalonia/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="93818f92-e7e5-4248-9d0c-91fc8a1ae628" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +31,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d8a5354b09db47eda5937b722f8095fc1ae600/c9/436d90e1/AvaloniaObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/354ff7be3c689badc677ac090bffd9297397c17c9b14e882f49f68cb8708552/Behavior.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/561d3ab512ec9bb1d839515bb136be7223c173e4eca1bcc4eb1c3b8817f67f/BehaviorOfT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia/Controls/DialogHost.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/CodeRepository/CSharp/ZBH.Class/MangoWidgets.Avalonia/MangoWidgets.Avalonia/Styles/DialogHost.axaml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -101,6 +101,7 @@
       <workItem from="1701049827477" duration="671000" />
       <workItem from="1701055881280" duration="1287000" />
       <workItem from="1701074519169" duration="1222000" />
+      <workItem from="1701842919480" duration="309000" />
     </task>
     <task id="LOCAL-00001" summary="feat ZoomContentControl">
       <option name="closed" value="true" />
@@ -126,7 +127,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701074599467</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat dialoghost增加 允许点击背景区域关闭的属性">
+      <option name="closed" value="true" />
+      <created>1701843092543</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701843092543</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat update version">
+      <option name="closed" value="true" />
+      <created>1701843108271</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701843108271</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +155,8 @@
     <MESSAGE value="feat ZoomContentControl" />
     <MESSAGE value="fix 变焦控件逻辑优化" />
     <MESSAGE value="feat add event2commandbehavior" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat add event2commandbehavior" />
+    <MESSAGE value="feat dialoghost增加 允许点击背景区域关闭的属性" />
+    <MESSAGE value="feat update version" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat update version" />
   </component>
 </project>
