@@ -7,8 +7,8 @@ public enum PenType
     /// </summary>
     Normal,
     
-/*    /// <summary>
+    /// <summary>
     /// 荧光笔
     /// </summary>
-    Highlighter,*/
+    Highlighter,
 }
