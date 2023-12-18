@@ -40,6 +40,8 @@ public class ZoomContentControl : ContentControl
     {
         ContentProperty.Changed.AddClassHandler<ZoomContentControl>(HandleContentChanged);
         ZoomProperty.Changed.AddClassHandler<ZoomContentControl>(HandleZoomChanged);
+        Gestures.PinchEvent.AddClassHandler<ZoomContentControl>(HandlePinched);
+        Gestures.PinchEndedEvent.AddClassHandler<ZoomContentControl>(HandlePinchEnded);
     }
 
     protected override void OnLoaded(RoutedEventArgs e)
@@ -185,9 +187,12 @@ public class ZoomContentControl : ContentControl
     {
         base.OnPointerMoved(e);
         if (!CanZoom) return;
-        if (!e.GetCurrentPoint(e.Source as Visual).Properties.IsLeftButtonPressed) return;
         if (!TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
         if (_pressedPoint is null) return;
+
+        // 可能是通过触摸拖动可视区域, _pressedPoint不为空说明当前确实是按下的状态
+        // if (!e.GetCurrentPoint(e.Source as Visual).Properties.IsLeftButtonPressed) return;
+
 
         var position = e.GetPosition(this);
 
@@ -236,6 +241,39 @@ public class ZoomContentControl : ContentControl
     }
 
     #endregion
+    
+    /// <summary>
+    /// 执行Pich之前的缩放大小,每次PichEnded结束时都重置为1
+    /// e.Scale的值是针对每第一次Pich前的大小
+    /// </summary>
+    private double _originPichScale = 1;
+
+    private static void HandlePinched(ZoomContentControl sender, PinchEventArgs e)
+    {
+        if (!sender.CanZoom) return;
+        if (!sender.EnsureTransformGroup(out var transformGroup)) return;
+        if (!sender.TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
+
+        var point = e.ScaleOrigin;
+        var point2Content = transformGroup.Value.Invert().Transform(point);
+
+        if (sender._originPichScale == 1)
+            sender._originPichScale = scaleTransform.ScaleX;
+
+        var scale = sender._originPichScale * e.Scale;
+        if (scale < 1)
+            scale = 1;
+
+        scaleTransform.ScaleX = scaleTransform.ScaleY = scale;
+        translateTransform.X = -1 * (point2Content.X * scaleTransform.ScaleX - point.X);
+        translateTransform.Y = -1 * (point2Content.Y * scaleTransform.ScaleY - point.Y);
+        sender.FixTransformArea(scaleTransform,translateTransform);
+    }
+
+    private static void HandlePinchEnded(ZoomContentControl sender, PinchEndedEventArgs args)
+    {
+        sender._originPichScale = 1;
+    }
 }
 
 public class ZoomedEventArgs : RoutedEventArgs
