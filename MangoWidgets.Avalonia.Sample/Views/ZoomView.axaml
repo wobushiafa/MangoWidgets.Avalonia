@@ -21,6 +21,9 @@
             <controls:ZoomContentControl Name="MainZoom"
                                          CanZoom="True"
                                          Zoom="{Binding Zoom}">
+				<controls:ZoomContentControl.GestureRecognizers>
+					<PinchGestureRecognizer/>
+				</controls:ZoomContentControl.GestureRecognizers>
                 <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/zoom.jpg" Stretch="Fill" />
             </controls:ZoomContentControl>
         </Border>
