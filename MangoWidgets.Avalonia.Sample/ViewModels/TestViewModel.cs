@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Reactive;
 using MangoWidgets.Avalonia.Sample.Contracts;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace MangoWidgets.Avalonia.Sample.ViewModels;
 
@@ -7,8 +10,14 @@ public class TestViewModel : ViewModelBase,IMainModule
 {
     public string? DisplayName { get; set; }
     public int Index { get; set; }
-    
+
+
+    [Reactive] public string? SelectedItem { get; set; }
+
     public List<string> SampleData { get; set; } = new List<string>();
+
+
+    public ReactiveCommand<Unit,Unit> TestCommand { get; set; }
 
     public TestViewModel()
     {
@@ -18,5 +27,9 @@ public class TestViewModel : ViewModelBase,IMainModule
         {
             SampleData.Add("示例数据" + i);
         }
+        SelectedItem = SampleData[0];
+
+        TestCommand = ReactiveCommand.Create(() => { SelectedItem = null; });
     }
+   
 }

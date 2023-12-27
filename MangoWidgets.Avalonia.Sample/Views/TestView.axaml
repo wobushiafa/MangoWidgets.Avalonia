@@ -19,13 +19,17 @@
             </Setter>
         </Style>
     </Control.Styles>
-    <ListBox ItemsSource="{Binding SampleData, Mode=OneWay}">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="{Binding .}" />
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+	<StackPanel>
+		<ListBox Height="200" SelectedItem="{Binding SelectedItem}"
+		 ItemsSource="{Binding SampleData, Mode=OneWay}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   Text="{Binding .}" />
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<Button Command="{Binding TestCommand}" />
+	</StackPanel>
 </reactiveUi:ReactiveUserControl>

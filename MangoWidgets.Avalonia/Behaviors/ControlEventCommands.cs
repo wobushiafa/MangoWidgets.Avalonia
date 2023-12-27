@@ -21,4 +21,10 @@ public class SelectionChangedEventCommand : NativeEvent2CommandBehavior<Selectin
     protected override void UnRegistEvent(SelectingItemsControl obj) => obj.SelectionChanged -= ProxyMethod;
 }
 
+public class TreeViewSelectionChangedEventCommand : NativeEvent2CommandBehavior<TreeView>
+{
+    protected override void RegistEvent(TreeView obj) => obj.SelectionChanged += ProxyMethod;
+    protected override void UnRegistEvent(TreeView obj) => obj.SelectionChanged -= ProxyMethod;
+}
+
 

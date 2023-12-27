@@ -34,7 +34,7 @@ public class ZoomContentControl : ContentControl
         remove => RemoveHandler(ZoomedEvent, value);
     }
 
-    protected override Type StyleKeyOverride => typeof(ContentControl);
+    protected override Type StyleKeyOverride => typeof(ZoomContentControl);
 
     static ZoomContentControl()
     {
