@@ -1,6 +1,7 @@
 ﻿<reactiveUi:ReactiveUserControl x:Class="MangoWidgets.Avalonia.Sample.Views.TestView"
                                 xmlns="https://github.com/avaloniaui"
                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:controls="clr-namespace:MangoWidgets.Avalonia.Controls;assembly=MangoWidgets.Avalonia"
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                                 xmlns:reactiveUi="http://reactiveui.net"
@@ -10,26 +11,28 @@
                                 x:DataType="vm:TestViewModel"
                                 x:TypeArguments="vm:TestViewModel"
                                 mc:Ignorable="d">
-    <Control.Styles>
-        <Style Selector=":is(ListBox)">
-            <Setter Property="ItemsPanel">
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </Setter>
-        </Style>
-    </Control.Styles>
-	<StackPanel>
-		<ListBox Height="200" SelectedItem="{Binding SelectedItem}"
-		 ItemsSource="{Binding SampleData, Mode=OneWay}">
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<TextBlock HorizontalAlignment="Center"
-							   VerticalAlignment="Center"
-							   Text="{Binding .}" />
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>
-		<Button Command="{Binding TestCommand}" />
-	</StackPanel>
+  <Control.Styles />
+
+  <Panel>
+    <controls:RatioBox AlwaysFullWith="True" Ratio="1.41414">
+      <ScrollViewer Name="ContentScrollViewer">
+        <controls:ZoomContentControl Name="ZoomHost" CanZoom="True">
+          <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/test.png" />
+        </controls:ZoomContentControl>
+      </ScrollViewer>
+    </controls:RatioBox>
+
+    <ToggleSwitch Name="Switch"
+                  Width="30"
+                  Height="30"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Top" />
+  </Panel>
+
+  <!--<controls:RatioBox AlwaysFullWith="False" Ratio="1.41414">
+    <controls:ZoomContentControl CanZoom="True">
+      <Image Source="avares://MangoWidgets.Avalonia.Sample/Assets/test.png" />
+    </controls:ZoomContentControl>
+  </controls:RatioBox>-->
+
 </reactiveUi:ReactiveUserControl>
