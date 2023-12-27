@@ -44,6 +44,27 @@ public class ZoomContentControl : ContentControl
         Gestures.PinchEndedEvent.AddClassHandler<ZoomContentControl>(HandlePinchEnded);
     }
 
+    public ZoomContentControl()
+    {
+        this.GestureRecognizers.Add(new PinchGestureRecognizer());
+        Gestures.PinchEvent.AddClassHandler<ZoomContentControl>(OnPinchEventCallback);
+    }
+
+    private void OnPinchEventCallback(ZoomContentControl sender, PinchEventArgs e)
+    {
+        if (!CanZoom) return;
+        if (!EnsureTransformGroup(out var transformGroup)) return;
+        if (!TryParseTransformGroup(out var scaleTransform, out var translateTransform)) return;
+
+        var point = e.ScaleOrigin;
+        var point2Content = transformGroup.Value.Invert().Transform(point);
+        var delta = e.Scale;
+        scaleTransform.ScaleX = scaleTransform.ScaleY = scaleTransform.ScaleX + delta;
+        translateTransform.X = -1 * (point2Content.X * scaleTransform.ScaleX - point.X);
+        translateTransform.Y = -1 * (point2Content.Y * scaleTransform.ScaleY - point.Y);
+        FixTransformArea(scaleTransform,translateTransform);
+    }
+
     protected override void OnLoaded(RoutedEventArgs e)
     {
         base.OnLoaded(e);
